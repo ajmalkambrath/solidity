@@ -95,6 +95,9 @@ contract C3 {
 }
 
 // Public Function :: Returning Multiple Outputs
+// Return multiple outputs
+// Named outouts
+// Destructuring assigment
 
 contract C4 {
 
@@ -112,6 +115,13 @@ contract C4 {
         x = 1;
         y = true;
         z = 2;
+    }
+
+    //  destructuring assigment
+    function destructuringAssigment() public pure returns (uint, bool, uint, bool, uint) {
+       (uint x, bool y, uint z) = returnMultipleVals();
+       (, bool _y, uint _z) = returnMultipleVals();
+       return (x, y, z ,_y, _z);
     }
 
 }

@@ -44,9 +44,33 @@ contract Array {
     }
 
     function removeCompact(uint index) public {
+        // Deleting an element creates a gap in the array.
+        // One trick to keep the array compact is to
+        // move the last element into the place to delete.
+
         // It resets the value at index to last value of an array,
         // then delete the current index value
         arr[index] = arr[arr.length - 1];
         arr.pop();
+    }
+
+    // Examples of removing array element
+    // Remove array element by shifting elements from right to left
+    uint[] public _arr;
+
+    function removeByShifting(uint _index) public {
+        require(_index < _arr.length, "index out of bound");
+
+        for (uint i = _index; i < _arr.length - 1; i++) {
+            _arr[i] = arr[i + 1];
+        }
+        _arr.pop();
+    }
+
+    // creating in memory array
+    function inMemoryArray()  external pure {
+        // create array in memory, only fixed size can be created
+        // push , poip will not work with in memory array
+        uint[] memory a = new uint[](5);
     }
 }
